@@ -1,8 +1,13 @@
 import java.net.URL
 
 class Scraper(private val urlPath: String) {
+    private val htmlParser = HTMLParser()
+
     fun start() {
-        println(getRawHTML(urlPath))
+        val rawHTML: String = getRawHTML(urlPath)
+        val urls: Set<String> = htmlParser.findUrls(rawHTML)
+
+
     }
 
     private fun getRawHTML(url: String): String {
@@ -12,6 +17,11 @@ class Scraper(private val urlPath: String) {
 
 
 fun main() {
+    println("Initializing...\n\n")
+
+
     val scraper = Scraper("https://kotlinlang.org/")
     scraper.start()
+
+    println("\n\nExiting...")
 }
