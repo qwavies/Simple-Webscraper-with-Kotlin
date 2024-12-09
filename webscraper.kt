@@ -6,6 +6,7 @@ class Scraper(private val urlPath: String) {
     fun start() {
         val rawHTML: String = getRawHTML(urlPath)
         val urls: Set<String> = htmlParser.findUrls(rawHTML)
+        println(urls)
 
 
     }
